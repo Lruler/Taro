@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Taro from "@tarojs/taro";
 import { View, Text, Button, Input } from "@tarojs/components";
 import { Head } from "../../components/header/index";
 import "./index.less";
@@ -22,7 +23,12 @@ const Login = () => {
   }
 
   const handleLogin = () => {
-    console.log(login)
+    // Taro.request({
+    //   url: "http://localhost:8000/blog/list?page=3",
+    //   success: (res) => {
+    //     console.log(res.data);
+    //   },
+    // });
   }
   
   return (
@@ -37,6 +43,7 @@ const Login = () => {
         密码:<Input type='password' onInput={handlePwd} value={login.pwd} className='login-form-input' />
         <Button className='button' onClick={handleLogin}>登陆</Button>
       </View>
+      <Button>点我走之</Button>
     </View>
   );
 };
