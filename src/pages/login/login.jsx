@@ -2,7 +2,7 @@ import { useState } from "react";
 import Taro from "@tarojs/taro";
 import { View, Text, Button, Input } from "@tarojs/components";
 import { Head } from "../../components/header/index";
-import "./index.less";
+import "./login.less";
 
 const Login = () => {
   const [count, setCount] = useState(0);
@@ -29,6 +29,23 @@ const Login = () => {
     //     console.log(res.data);
     //   },
     // });
+    Taro.request({
+      url: "http://localhost:8000/login",
+      method: "POST",
+      data: {
+        userName: login.user,
+        password: login.pwd
+      },
+      success: (res) => {
+        console.log(res.data)
+      }
+    })
+  }
+
+  const handleGo = () => {
+    Taro.redirectTo({
+      url: '/pages/home/home'
+    })
   }
   
   return (
@@ -42,8 +59,8 @@ const Login = () => {
         账号:<Input type='text' onInput={handleUser} value={login.user} className='login-form-input' focus />
         密码:<Input type='password' onInput={handlePwd} value={login.pwd} className='login-form-input' />
         <Button className='button' onClick={handleLogin}>登陆</Button>
+            <Button className='button' onClick={handleGo}>点我走之</Button>
       </View>
-      <Button>点我走之</Button>
     </View>
   );
 };
