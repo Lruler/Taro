@@ -9,4 +9,6 @@ const Head = () => {
   );
 };
 
+// export default Head
+
 export { Head }
